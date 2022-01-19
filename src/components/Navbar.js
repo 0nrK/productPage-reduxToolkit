@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Cart from './Cart'
 
 
-const Navbar = () => {
+const Navbar = ({ props }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isCardOpen, setIsCardOpen] = useState(false)
@@ -26,13 +26,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex flex-row space-x-3  md:space-x-9 items-center">
-                    <div className="relative">
-                        <svg onClick={() => setIsCardOpen(!isCardOpen)} xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 md:w-9 md:h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div onClick={() => setIsCardOpen(!isCardOpen)} className="cursor-pointer relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 md:w-9 md:h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
-                        <div className="absolute flex items-center top-3 -right-2 bg-red-500 rounded-full w-5 h-5 md:w-6 md:h-6">
-                            <span className="mx-auto text-xs text-white">3</span>
-                        </div>
+                        {props.quantity > 0 &&
+                            <div className="absolute flex items-center top-3 -right-2 bg-red-500 rounded-full w-5 h-5 md:w-6 md:h-6">
+                                <span className="mx-auto text-xs text-white">{props.quantity}</span>
+                            </div>}
                     </div>
                     <img className="w-9 h-9 md:h-12 md:w-12" src="images/image-avatar.png" alt="userImg" />
                 </div>
