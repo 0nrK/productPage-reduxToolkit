@@ -3,7 +3,7 @@ import Product from '../components/Product'
 
 const ProductPage = () => {
     return (
-        <div>
+        <div className="max-w-screen-2xl mx-auto">
             <Product />
         </div>
     )
